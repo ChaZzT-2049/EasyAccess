@@ -28,6 +28,9 @@ class User extends Eloquent implements AuthenticatableContract
         'tipo',
         'matricula',
         'carrera',
+        'numemp',
+        'area',
+        'cargo',
         'admin',
         'password',
     ];

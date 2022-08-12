@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 
-class RegisterController extends Controller
+class RegisterEstController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -55,11 +55,13 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:60'],
             'email' => ['required', 'string', 'email', 'max:60', 'unique:users'],
             'tipo' => ['required', 'string'],
+            'matricula' => ['numeric'],
+            'carrera' => ['string'],
             'admin' => ['boolean'],
             'password' => ['required', 'string', 'min:8', 'max:20', 'confirmed'],
         ]);
-    }
 
+    }
     /**
      * Create a new user instance after a valid registration.
      *
@@ -74,6 +76,8 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'tipo' => $data['tipo'],
+            'matricula' => $data['matricula'],
+            'carrera' => $data['carrera'],
             'admin' => $data['admin'],
             'password' => Hash::make($data['password']),
         ]);

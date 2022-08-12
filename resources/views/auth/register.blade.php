@@ -13,7 +13,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
                 {{-- formulario --}}
                 <div class="card-body">
-                    <form method="POST" action="{{ url('/register') }}" id="formulario">
+                    <form method="POST" action="#" id="formulario">
                         @csrf
 
                         <div class="row mb-3">
@@ -167,7 +167,7 @@
                         <div class="row mb-0">
                             {{-- subir formulario --}}
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" id="send" class="btn btn-primary">
+                                <button type="button" id="send" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
                             </div>
@@ -196,9 +196,27 @@
             document.getElementById("visitante").style.display = "flex";
         }
     }
+    const btn = document.getElementById('send');
+    console.log(btn); // null
+
+    // Check if btn exists before addEventListener()
+    if (btn) {
+        btn.addEventListener('click', (e) => {
+            console.log('btn clicked');
+            e.preventDefault()
+
+            if(document.getElementById('tipo').value == 'Estudiante')
+            formulario.setAttribute('action', '{{ url('/registerest') }}')
+
+            if(document.getElementById('tipo').value == 'Personal')
+            formulario.setAttribute('action', '{{ url('/registerper ')}}')
+
+            document.getElementById('formulario').submit()
+        });
+    }
 </script>
-  </body>
-  @endsection
+</body>
+@endsection
 </html>
 
 
