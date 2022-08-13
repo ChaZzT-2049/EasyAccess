@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 
-class RegisterPerController extends Controller
+class RegisterProController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -55,9 +55,9 @@ class RegisterPerController extends Controller
             'name' => ['required', 'string', 'max:60'],
             'email' => ['required', 'string', 'email', 'max:60', 'unique:users'],
             'tipo' => ['required', 'string'],
-            'numemp' => ['numeric'],
-            'areaper' => ['string'],
-            'cargo' => ['string'],
+            'empresapro' => ['string'],
+            'encargadopro' => ['string'],
+            'descripcion' => ['string'],
             'admin' => ['boolean'],
             'password' => ['required', 'string', 'min:8', 'max:20', 'confirmed'],
         ]);
@@ -77,9 +77,9 @@ class RegisterPerController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'tipo' => $data['tipo'],
-            'numemp' => $data['numemp'],
-            'areaper' => $data['areaper'],
-            'cargo' => $data['cargo'],
+            'empresapro' => $data['empresapro'],
+            'encargadopro' => $data['encargadopro'],
+            'descripcion' => $data['descripcion'],
             'admin' => $data['admin'],
             'password' => Hash::make($data['password']),
         ]);

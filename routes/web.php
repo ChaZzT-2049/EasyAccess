@@ -21,7 +21,10 @@ Route::get('/', function () {
 });
 
 Route::get('/register', function (){
-    return view('auth/register');
+    if(Auth::user()->admin){ 
+        return view('auth/register');
+    }
+    return view('home');
 });
 
 //Ruta al home de administrador usando controlador home

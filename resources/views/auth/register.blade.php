@@ -48,7 +48,7 @@
                             <label for="tipo" class="col-md-4 col-form-label text-md-end">{{ __('Tipo de Usuario') }}</label>
                             {{-- select tipo de usuarios --}}
                             <div class="col-md-6">
-                                <select id="tipo" name="tipo" type="text" class="form-select" value="{{ old('tipo')}}" onchange="showInp()" action="{{ url('/register') }}">
+                                <select id="tipo" name="tipo" type="text" class="form-select" value="{{ old('tipo')}}" onchange="showInp()">
                                     <option value="default">Selecciona un tipo de usuario</option>
                                     <option value="Estudiante">Estudiante</option>
                                     <option value="Personal">Personal</option>
@@ -97,10 +97,11 @@
                                 @enderror
                             </div>
                             <p></p>
-                            <label for="area" class="col-md-4 col-form-label text-md-end">{{ __('Area') }}</label>
+                            <label for="areaper" class="col-md-4 col-form-label text-md-end">{{ __('Area') }}</label>
                             <div class="col-md-6">
-                                <select id="area" type="text" class="form-select" name="area" value="{{ old('area')}}">
+                                <select id="areaper" type="text" class="form-select" name="areaper" value="{{ old('areaper')}}">
                                   <option>Servicios Escolares</option>
+                                  <option>General</option>
                                   <option>Edificio D</option>
                                   <option>Edificio L</option>
                                   <option>Biblioteca</option>
@@ -110,7 +111,7 @@
                             <p></p>
                             <label for="cargo" class="col-md-4 col-form-label text-md-end">{{ __('Cargo') }}</label>
                             <div class="col-md-6">
-                                <select id="cargo" type="text" class="form-select" name="cargo" value="{{ old('area')}}">
+                                <select id="cargo" type="text" class="form-select" name="cargo" value="{{ old('cargo')}}">
                                   <option>Rector</option>
                                   <option>Coordinador</option>
                                   <option>Directivo</option>
@@ -132,6 +133,120 @@
                                     </span>
                                 @enderror
                             </div>
+                            <p></p>
+                            <label for="celular" class="col-md-4 col-form-label text-md-end">{{ __('Numero Telefonico') }}</label>
+                            <div class="col-md-6">
+                                <input id="celular" type="text" class="form-control @error('celular') is-invalid @enderror" name="celular">
+                                @error('celular')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <p></p>
+                            <label for="motivo" class="col-md-4 col-form-label text-md-end">{{ __('Motivo de Visita') }}</label>
+                            <div class="col-md-6">
+                                <input id="motivo" type="text" class="form-control @error('motivo') is-invalid @enderror" name="motivo">
+                                @error('motivo')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div id="servicios" class="row mb-3" style="display: none">
+                            <label for="empresaser" class="col-md-4 col-form-label text-md-end">{{ __('Empresa') }}</label>
+                            {{-- select tipo de usuarios --}}
+                            <div class="col-md-6">
+                                <input id="empresaser" type="text" class="form-control @error('empresaser') is-invalid @enderror" name="empresaser">
+                                @error('empresaser')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <p></p>
+                            <label for="encargadoser" class="col-md-4 col-form-label text-md-end">{{ __('Encargadoser') }}</label>
+                            <div class="col-md-6">
+                                <input id="encargadoser" type="text" class="form-control @error('encargadoser') is-invalid @enderror" name="encargadoser">
+                                @error('encargadoser')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <p></p>
+                            <label for="areaser" class="col-md-4 col-form-label text-md-end">{{ __('Area') }}</label>
+                            <div class="col-md-6">
+                                <select id="areaser" type="text" class="form-select" name="areaser" value="{{ old('areaser')}}">
+                                    <option>Servicios Escolares</option>
+                                    <option>Edificio D</option>
+                                    <option>Edificio L</option>
+                                    <option>Biblioteca</option>
+                                    <option>Areas Verdes</option>
+                                </select>
+                            </div>
+                            <p></p>
+                            <label for="servicio" class="col-md-4 col-form-label text-md-end">{{ __('Servicio') }}</label>
+                            <div class="col-md-6">
+                                <input id="servicio" type="text" class="form-control @error('servicio') is-invalid @enderror" name="servicio">
+                                @error('servicio')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div id="proveedor" class="row mb-3" style="display: none">
+                            <label for="empresapro" class="col-md-4 col-form-label text-md-end">{{ __('Empresa') }}</label>
+                            {{-- select tipo de usuarios --}}
+                            <div class="col-md-6">
+                                <input id="empresapro" type="text" class="form-control @error('empresapro') is-invalid @enderror" name="empresapro">
+                                @error('empresapro')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <p></p>
+                            <label for="encargadopro" class="col-md-4 col-form-label text-md-end">{{ __('Encargado') }}</label>
+                            <div class="col-md-6">
+                                <input id="encargadopro" type="text" class="form-control @error('encargadopro') is-invalid @enderror" name="encargadopro">
+                                @error('encargadopro')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <p></p>
+                            <label for="descripcion" class="col-md-4 col-form-label text-md-end">{{ __('Descripcion') }}</label>
+                            <div class="col-md-6">
+                                <input id="descripcion" type="text" class="form-control @error('descripcion') is-invalid @enderror" name="descripcion">
+                                @error('descripcion')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div id="administrador" class="row mb-3" style="display: none">
+                            <label for="numadmin" class="col-md-4 col-form-label text-md-end">{{ __('Numero de Empleado') }}</label>
+                            {{-- numero de empleado --}}
+                            <div class="col-md-6">
+                                <input id="numadmin" type="text" class="form-control @error('numadmin') is-invalid @enderror" name="numadmin">
+                                @error('numadmin')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <p></p>
+                            <label for="permisos" class="col-md-4 col-form-label text-md-end">{{ __('Permisos') }}</label>
+                            <p class="col-md-6 col-form-label text-left">Administrador <input type="hidden" name="admin" value="0"><input type="checkbox" name="admin" value="1"></p>
+                            {{-- validacion de admin campos ocultos para que en la validacion de usuarios el campo booleano aparezca en falso --}}
                         </div>
 
                         <div class="row mb-3">
@@ -156,14 +271,6 @@
                             </div>
                         </div>
 
-                        <div className="col-md-6">
-                            {{-- validacion de admin
-                                campos ocultos para que en la validacion de usuarios el campo booleano aparezca en falso
-                            --}}
-                            <input type="hidden" name="admin" value="0">
-                            <input type="hidden" name="admin" value="0">
-                        </div>
-
                         <div class="row mb-0">
                             {{-- subir formulario --}}
                             <div class="col-md-6 offset-md-4">
@@ -186,23 +293,51 @@
             document.getElementById("estudiante").style.display = "flex";
             document.getElementById("personal").style.display = "none";
             document.getElementById("visitante").style.display = "none";
+            document.getElementById("servicios").style.display = "none";
+            document.getElementById("proveedor").style.display = "none";
+            document.getElementById("administrador").style.display = "none";
         }else if(getSelectValue=="Personal"){
             document.getElementById("estudiante").style.display = "none";
             document.getElementById("personal").style.display = "flex";
             document.getElementById("visitante").style.display = "none";
+            document.getElementById("servicios").style.display = "none";
+            document.getElementById("proveedor").style.display = "none";
+            document.getElementById("administrador").style.display = "none";
         }else if(getSelectValue=="Visitante"){
             document.getElementById("estudiante").style.display = "none";
             document.getElementById("personal").style.display = "none";
             document.getElementById("visitante").style.display = "flex";
+            document.getElementById("servicios").style.display = "none";
+            document.getElementById("proveedor").style.display = "none";
+            document.getElementById("administrador").style.display = "none";
+        }else if(getSelectValue=="Servicios"){
+            document.getElementById("estudiante").style.display = "none";
+            document.getElementById("personal").style.display = "none";
+            document.getElementById("visitante").style.display = "none";
+            document.getElementById("servicios").style.display = "flex";
+            document.getElementById("proveedor").style.display = "none";
+            document.getElementById("administrador").style.display = "none";
+        }else if(getSelectValue=="Proveedor"){
+            document.getElementById("estudiante").style.display = "none";
+            document.getElementById("personal").style.display = "none";
+            document.getElementById("visitante").style.display = "none";
+            document.getElementById("servicios").style.display = "none";
+            document.getElementById("proveedor").style.display = "flex";
+            document.getElementById("administrador").style.display = "none";
+        }else if(getSelectValue=="Administrador"){
+            document.getElementById("estudiante").style.display = "none";
+            document.getElementById("personal").style.display = "none";
+            document.getElementById("visitante").style.display = "none";
+            document.getElementById("servicios").style.display = "none";
+            document.getElementById("proveedor").style.display = "none";
+            document.getElementById("administrador").style.display = "flex";
         }
     }
     const btn = document.getElementById('send');
-    console.log(btn); // null
 
     // Check if btn exists before addEventListener()
     if (btn) {
         btn.addEventListener('click', (e) => {
-            console.log('btn clicked');
             e.preventDefault()
 
             if(document.getElementById('tipo').value == 'Estudiante')
@@ -210,6 +345,18 @@
 
             if(document.getElementById('tipo').value == 'Personal')
             formulario.setAttribute('action', '{{ url('/registerper ')}}')
+
+            if(document.getElementById('tipo').value == 'Visitante')
+            formulario.setAttribute('action', '{{ url('/registervis ')}}')
+
+            if(document.getElementById('tipo').value == 'Servicios')
+            formulario.setAttribute('action', '{{ url('/registerser ')}}')
+
+            if(document.getElementById('tipo').value == 'Proveedor')
+            formulario.setAttribute('action', '{{ url('/registerpro ')}}')
+
+            if(document.getElementById('tipo').value == 'Administrador')
+            formulario.setAttribute('action', '{{ url('/registeradm ')}}')
 
             document.getElementById('formulario').submit()
         });
