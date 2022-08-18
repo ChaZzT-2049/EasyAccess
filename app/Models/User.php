@@ -43,6 +43,7 @@ class User extends Eloquent implements AuthenticatableContract
         'descripcion',
         'numadmin',
         'admin',
+        'tipoaux',
         'password',
     ];
 

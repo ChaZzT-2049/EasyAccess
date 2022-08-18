@@ -15,8 +15,9 @@
                     @endif
 
                     {{ __('You are logged in as admin!') }}
-                    {{-- registrar usuarios --}}
-                    <a class="nav-link me-2 btn btn-primary btn-primary-outline-success text-white" href="{{ url('/register') }}">{{ __('Register User') }}</a>
+                    {{-- registrar usuarios 
+                        <a class="nav-link me-2 btn btn-primary btn-primary-outline-success text-white" href="{{ url('/register') }}">{{ __('Register User') }}</a>
+                    --}}
                     @if(Session::has('message'))
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             <p>{!! Session::get('message') !!}

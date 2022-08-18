@@ -56,6 +56,7 @@
                                     <option value="Servicios">Servicios</option>
                                     <option value="Proveedor">Proveedor</option>
                                     <option value="Administrador">Administrador</option>
+                                    <option value="Otro">Otro</option>
                                 </select>
                             </div>
                         </div>
@@ -108,7 +109,7 @@
                                   <option>Coordinacion</option>
                                 </select>
                             </div>
-                            <p></p>
+                            {{-- <p></p>
                             <label for="cargo" class="col-md-4 col-form-label text-md-end">{{ __('Cargo') }}</label>
                             <div class="col-md-6">
                                 <select id="cargo" type="text" class="form-select" name="cargo" value="{{ old('cargo')}}">
@@ -119,7 +120,8 @@
                                   <option>Psicologo</option>
                                   <option>Profesor</option>
                                 </select>
-                            </div>
+                            </div> 
+                            --}}
                         </div>
 
                         <div id="visitante" class="row mb-3" style="display: none">
@@ -249,6 +251,19 @@
                             {{-- validacion de admin campos ocultos para que en la validacion de usuarios el campo booleano aparezca en falso --}}
                         </div>
 
+                        <div id="otro" class="row mb-3" style="display: none">
+                            <label for="tipoaux" class="col-md-4 col-form-label text-md-end">{{ __('Define el Tipo el tipo de Usuario') }}</label>
+                            {{-- tipoaux --}}
+                            <div class="col-md-6">
+                                <input id="tipoaux" type="text" class="form-control @error('tipoaux') is-invalid @enderror" name="tipoaux" value="{{ old('tipoaux')}}">
+                                @error('tipoaux')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
                             {{-- contraseña --}}
@@ -296,6 +311,7 @@
             document.getElementById("servicios").style.display = "none";
             document.getElementById("proveedor").style.display = "none";
             document.getElementById("administrador").style.display = "none";
+            document.getElementById("otro").style.display = "none";
         }else if(getSelectValue=="Personal"){
             document.getElementById("estudiante").style.display = "none";
             document.getElementById("personal").style.display = "flex";
@@ -303,6 +319,7 @@
             document.getElementById("servicios").style.display = "none";
             document.getElementById("proveedor").style.display = "none";
             document.getElementById("administrador").style.display = "none";
+            document.getElementById("otro").style.display = "none";
         }else if(getSelectValue=="Visitante"){
             document.getElementById("estudiante").style.display = "none";
             document.getElementById("personal").style.display = "none";
@@ -310,6 +327,7 @@
             document.getElementById("servicios").style.display = "none";
             document.getElementById("proveedor").style.display = "none";
             document.getElementById("administrador").style.display = "none";
+            document.getElementById("otro").style.display = "none";
         }else if(getSelectValue=="Servicios"){
             document.getElementById("estudiante").style.display = "none";
             document.getElementById("personal").style.display = "none";
@@ -317,6 +335,7 @@
             document.getElementById("servicios").style.display = "flex";
             document.getElementById("proveedor").style.display = "none";
             document.getElementById("administrador").style.display = "none";
+            document.getElementById("otro").style.display = "none";
         }else if(getSelectValue=="Proveedor"){
             document.getElementById("estudiante").style.display = "none";
             document.getElementById("personal").style.display = "none";
@@ -324,6 +343,7 @@
             document.getElementById("servicios").style.display = "none";
             document.getElementById("proveedor").style.display = "flex";
             document.getElementById("administrador").style.display = "none";
+            document.getElementById("otro").style.display = "none";
         }else if(getSelectValue=="Administrador"){
             document.getElementById("estudiante").style.display = "none";
             document.getElementById("personal").style.display = "none";
@@ -331,6 +351,16 @@
             document.getElementById("servicios").style.display = "none";
             document.getElementById("proveedor").style.display = "none";
             document.getElementById("administrador").style.display = "flex";
+            document.getElementById("otro").style.display = "none";
+        }
+        else if(getSelectValue=="Otro"){
+            document.getElementById("estudiante").style.display = "none";
+            document.getElementById("personal").style.display = "none";
+            document.getElementById("visitante").style.display = "none";
+            document.getElementById("servicios").style.display = "none";
+            document.getElementById("proveedor").style.display = "none";
+            document.getElementById("administrador").style.display = "none";
+            document.getElementById("otro").style.display = "flex";
         }
     }
     const btn = document.getElementById('send');
@@ -357,6 +387,9 @@
 
             if(document.getElementById('tipo').value == 'Administrador')
             formulario.setAttribute('action', '{{ url('/registeradm ')}}')
+
+            if(document.getElementById('tipo').value == 'Otro')
+            formulario.setAttribute('action', '{{ url('/registerotro ')}}')
 
             document.getElementById('formulario').submit()
         });

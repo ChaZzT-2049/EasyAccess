@@ -35,3 +35,5 @@ Auth::routes();
 
 //Ruta al home de usuario usando controlador home
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/userslist', [App\Http\Controllers\Auth\RegisterEstController::class, 'index'])->name('users');

@@ -84,4 +84,10 @@ class RegisterEstController extends Controller
 
         \Session::flash('message', 'store');
     }
+
+    public function index()
+    {
+        $users=User::all();
+        return view('userslist',compact('users'));
+    }
 }
