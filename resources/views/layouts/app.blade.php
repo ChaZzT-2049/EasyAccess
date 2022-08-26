@@ -18,6 +18,7 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <!--<link href="{ { asset('css/app.css') }}" rel="stylesheet">-->
 </head>
 <body>
     <div id="app">
@@ -39,7 +40,7 @@
                             <i class="icon ion-md-apps mr-2 lead"></i>
                             <span>Home</span>
                         </a>
-                        <a href="{{ url('/userslist') }}">
+                        <a href="{{ url('/users') }}">
                             <i class="icon ion-md-people mr-2 lead"></i>
                             <span>Users</span>
                         </a>
@@ -51,7 +52,7 @@
                             <i class="icon ion-md-person-add mr-2 lead"></i>
                             <span>Register</span>
                         </a>
-                        <a href="#">
+                        <a href="{{ url('/profile') }}">
                             <i class="icon ion-md-person mr-2 lead"></i>
                             <span>Profile</span>
                         </a>

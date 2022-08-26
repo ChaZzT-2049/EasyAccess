@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header bg-primary text-white text-center">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -21,11 +21,22 @@
                     @if(Session::has('message'))
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             <p>{!! Session::get('message') !!}
-                                <a href="{{ url('/adminhome') }}">
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </a>
+                                <button type="button" class="btn btn-success" data-dismiss="alert">
+                                    <a href="{{ url('/adminhome') }}" class="text-white">
+                                        <i class="icon ion-md-close mr-2 lead"></i>
+                                    </a>
+                                </button>
+                            </p>
+                        </div>
+                    @endif
+                    @if(Session::has('warning'))
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <p>{!! Session::get('warning') !!}
+                                <button type="button" class="btn btn-danger" data-dismiss="alert">
+                                    <a href="{{ url('/adminhome') }}" class="text-white">
+                                        <i class="icon ion-md-close mr-2 lead"></i>
+                                    </a>
+                                </button>
                             </p>
                         </div>
                     @endif

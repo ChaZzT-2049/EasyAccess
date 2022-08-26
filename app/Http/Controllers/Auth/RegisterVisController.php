@@ -7,8 +7,10 @@ use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
+use Auth;
 
 class RegisterVisController extends Controller
 {
@@ -85,5 +87,40 @@ class RegisterVisController extends Controller
         ]);
 
         \Session::flash('message', 'store');
+    }
+
+    public function index()
+    {
+        if(Auth::user()->admin){ 
+            $users=User::where('tipo', 'Visitante')->get();
+            return view('visitantes',compact('users'));
+        }
+        return view('home');
+    }
+
+    public function edit($id)
+    {
+        if(Auth::user()->admin){ 
+            $user = User::find($id);
+            return view('useredit',compact('user','id'));
+        }
+        return view('home');
+    }
+
+    public function update(Request $request, $id)
+    {
+        if(Auth::user()->admin){ 
+            $user= User::find($id);
+            $user->name = $request->get('name');
+            $user->email = $request->get('email');
+            $user->tipo = $request->get('tipo');  
+            $user->identificacion = $request->get('identificacion'); 
+            $user->celular = $request->get('celular');
+            $user->motivo = $request->get('motivo');
+            $user->save();
+            return redirect()->route("adminhome")->with('message','User has been succesfully updated');
+            \Session::flash('message', 'update');
+        }
+        return view('home');
     }
 }

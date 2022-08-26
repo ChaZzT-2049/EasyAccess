@@ -10,7 +10,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header bg-primary text-white text-center">{{ __('Register') }}</div>
+                <div class="card-header bg-primary text-white text-center">{{ __('Edit User') }}</div>
                 {{-- formulario --}}
                 <div class="card-body">
                     <form method="POST" action="#" id="formulario">
@@ -20,7 +20,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
                             {{-- campo nombre --}}
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$user->name}}" required autocomplete="name" autofocus>
                                 {{-- capturar errores y validaciones --}}
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -34,7 +34,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
                             {{-- campo email --}}
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{$user->email}}" required autocomplete="email">
                                 {{-- capturar errores y validaciones --}}
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -48,8 +48,8 @@
                             <label for="tipo" class="col-md-4 col-form-label text-md-end">{{ __('Tipo de Usuario') }}</label>
                             {{-- select tipo de usuarios --}}
                             <div class="col-md-6">
-                                <select id="tipo" name="tipo" type="text" class="form-select" value="{{ old('tipo')}}" onchange="showInp()">
-                                    <option value="default">Selecciona un tipo de usuario</option>
+                                <select id="tipo" name="tipo" type="text" class="form-select" value="{{$user->tipo}}" onchange="showInp()">
+                                    <option value="{{$user->tipo}}">{{$user->tipo}}</option>
                                     <option value="Estudiante">Estudiante</option>
                                     <option value="Personal">Personal</option>
                                     <option value="Visitante">Visitante</option>
@@ -65,7 +65,7 @@
                             <label for="matricula" class="col-md-4 col-form-label text-md-end">{{ __('Matricula') }}</label>
                             {{-- Matricula --}}
                             <div class="col-md-6">
-                                <input id="matricula" type="text" class="form-control @error('matricula') is-invalid @enderror" name="matricula" value="{{ old('matricula')}}">
+                                <input id="matricula" type="text" class="form-control @error('matricula') is-invalid @enderror" name="matricula" value="{{$user->matricula}}">
                                 @error('matricula')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -75,8 +75,9 @@
                             <p></p>
                             <label for="carrera" class="col-md-4 col-form-label text-md-end">{{ __('Carrera') }}</label>
                             <div class="col-md-6">
-                                <select id="carrera" type="text" class="form-select" name="carrera" value="{{ old('carrera')}}">
-                                    <option>Desarrollo y Gestión de Software</option>
+                                <select required id="carrera" type="text" class="form-select" name="carrera" value="{{ $user->carrera}}">
+                                    <option value="{{$user->carrera}}">{{$user->carrera}}</option>
+                                    <option> Desarrollo y Gestión de Software</option>
                                     <option>Gastronomía</option>
                                     <option>Gestión y Desarrollo Turístico</option>
                                     <option>Contaduría</option>
@@ -90,7 +91,7 @@
                             <label for="numemp" class="col-md-4 col-form-label text-md-end">{{ __('Numero de Empleado') }}</label>
                             {{-- numero de empleado --}}
                             <div class="col-md-6">
-                                <input id="numemp" type="text" class="form-control @error('numemp') is-invalid @enderror" name="numemp">
+                                <input id="numemp" type="text" class="form-control @error('numemp') is-invalid @enderror" name="numemp" value="{{$user->numemp}}">
                                 @error('numemp')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -101,12 +102,13 @@
                             <label for="areaper" class="col-md-4 col-form-label text-md-end">{{ __('Area') }}</label>
                             <div class="col-md-6">
                                 <select id="areaper" type="text" class="form-select" name="areaper" value="{{ old('areaper')}}">
-                                  <option>Servicios Escolares</option>
-                                  <option>General</option>
-                                  <option>Edificio D</option>
-                                  <option>Edificio L</option>
-                                  <option>Biblioteca</option>
-                                  <option>Coordinacion</option>
+                                    <option value="{{$user->areaper}}">{{$user->areaper}}</option>
+                                    <option>Servicios Escolares</option>
+                                    <option>General</option>
+                                    <option>Edificio D</option>
+                                    <option>Edificio L</option>
+                                    <option>Biblioteca</option>
+                                    <option>Coordinacion</option>
                                 </select>
                             </div>
                             {{-- <p></p>
@@ -128,7 +130,7 @@
                             <label for="identificacion" class="col-md-4 col-form-label text-md-end">{{ __('Identificación') }}</label>
                             {{-- select tipo de usuarios --}}
                             <div class="col-md-6">
-                                <input id="identificacion" type="text" class="form-control @error('identificacion') is-invalid @enderror" name="identificacion">
+                                <input id="identificacion" type="text" class="form-control @error('identificacion') is-invalid @enderror" name="identificacion" value="{{$user->identificacion}}">
                                 @error('identificacion')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -138,7 +140,7 @@
                             <p></p>
                             <label for="celular" class="col-md-4 col-form-label text-md-end">{{ __('Numero Telefonico') }}</label>
                             <div class="col-md-6">
-                                <input id="celular" type="text" class="form-control @error('celular') is-invalid @enderror" name="celular">
+                                <input id="celular" type="text" class="form-control @error('celular') is-invalid @enderror" name="celular" value="{{$user->celular}}">
                                 @error('celular')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -148,7 +150,7 @@
                             <p></p>
                             <label for="motivo" class="col-md-4 col-form-label text-md-end">{{ __('Motivo de Visita') }}</label>
                             <div class="col-md-6">
-                                <input id="motivo" type="text" class="form-control @error('motivo') is-invalid @enderror" name="motivo">
+                                <input id="motivo" type="text" class="form-control @error('motivo') is-invalid @enderror" name="motivo" value="{{$user->motivo}}">
                                 @error('motivo')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -161,7 +163,7 @@
                             <label for="empresaser" class="col-md-4 col-form-label text-md-end">{{ __('Empresa') }}</label>
                             {{-- select tipo de usuarios --}}
                             <div class="col-md-6">
-                                <input id="empresaser" type="text" class="form-control @error('empresaser') is-invalid @enderror" name="empresaser">
+                                <input id="empresaser" type="text" class="form-control @error('empresaser') is-invalid @enderror" name="empresaser" value="{{$user->empresaser}}">
                                 @error('empresaser')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -169,9 +171,9 @@
                                 @enderror
                             </div>
                             <p></p>
-                            <label for="encargadoser" class="col-md-4 col-form-label text-md-end">{{ __('Encargado del servicio') }}</label>
+                            <label for="encargadoser" class="col-md-4 col-form-label text-md-end">{{ __('Encargadoser') }}</label>
                             <div class="col-md-6">
-                                <input id="encargadoser" type="text" class="form-control @error('encargadoser') is-invalid @enderror" name="encargadoser">
+                                <input id="encargadoser" type="text" class="form-control @error('encargadoser') is-invalid @enderror" name="encargadoser" value="{{$user->encargadoser}}">
                                 @error('encargadoser')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -182,6 +184,7 @@
                             <label for="areaser" class="col-md-4 col-form-label text-md-end">{{ __('Area') }}</label>
                             <div class="col-md-6">
                                 <select id="areaser" type="text" class="form-select" name="areaser" value="{{ old('areaser')}}">
+                                    <option value="{{$user->areaser}}">{{$user->areaser}}</option>
                                     <option>Servicios Escolares</option>
                                     <option>Edificio D</option>
                                     <option>Edificio L</option>
@@ -192,7 +195,7 @@
                             <p></p>
                             <label for="servicio" class="col-md-4 col-form-label text-md-end">{{ __('Servicio') }}</label>
                             <div class="col-md-6">
-                                <input id="servicio" type="text" class="form-control @error('servicio') is-invalid @enderror" name="servicio">
+                                <input id="servicio" type="text" class="form-control @error('servicio') is-invalid @enderror" name="servicio" value="{{$user->servicio}}">
                                 @error('servicio')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -205,7 +208,7 @@
                             <label for="empresapro" class="col-md-4 col-form-label text-md-end">{{ __('Empresa') }}</label>
                             {{-- select tipo de usuarios --}}
                             <div class="col-md-6">
-                                <input id="empresapro" type="text" class="form-control @error('empresapro') is-invalid @enderror" name="empresapro">
+                                <input id="empresapro" type="text" class="form-control @error('empresapro') is-invalid @enderror" name="empresapro" value="{{$user->empresapro}}">
                                 @error('empresapro')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -215,7 +218,7 @@
                             <p></p>
                             <label for="encargadopro" class="col-md-4 col-form-label text-md-end">{{ __('Encargado') }}</label>
                             <div class="col-md-6">
-                                <input id="encargadopro" type="text" class="form-control @error('encargadopro') is-invalid @enderror" name="encargadopro">
+                                <input id="encargadopro" type="text" class="form-control @error('encargadopro') is-invalid @enderror" name="encargadopro" value="{{$user->encargadopro}}">
                                 @error('encargadopro')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -225,7 +228,7 @@
                             <p></p>
                             <label for="descripcion" class="col-md-4 col-form-label text-md-end">{{ __('Descripcion') }}</label>
                             <div class="col-md-6">
-                                <input id="descripcion" type="text" class="form-control @error('descripcion') is-invalid @enderror" name="descripcion">
+                                <input id="descripcion" type="text" class="form-control @error('descripcion') is-invalid @enderror" name="descripcion" value="{{$user->descripcion}}">
                                 @error('descripcion')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -238,7 +241,7 @@
                             <label for="numadmin" class="col-md-4 col-form-label text-md-end">{{ __('Numero de Empleado') }}</label>
                             {{-- numero de empleado --}}
                             <div class="col-md-6">
-                                <input id="numadmin" type="text" class="form-control @error('numadmin') is-invalid @enderror" name="numadmin">
+                                <input id="numadmin" type="text" class="form-control @error('numadmin') is-invalid @enderror" name="numadmin" value="{{$user->numadmin}}">
                                 @error('numadmin')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -255,7 +258,7 @@
                             <label for="tipoaux" class="col-md-4 col-form-label text-md-end">{{ __('Define el Tipo el tipo de Usuario') }}</label>
                             {{-- tipoaux --}}
                             <div class="col-md-6">
-                                <input id="tipoaux" type="text" class="form-control @error('tipoaux') is-invalid @enderror" name="tipoaux" value="{{ old('tipoaux')}}">
+                                <input id="tipoaux" type="text" class="form-control @error('tipoaux') is-invalid @enderror" name="tipoaux" value="{{$user->tipoaux}}">
                                 @error('tipoaux')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -290,7 +293,7 @@
                             {{-- subir formulario --}}
                             <div class="col-md-6 offset-md-4">
                                 <button type="button" id="send" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    {{ __('Update User') }}
                                 </button>
                             </div>
                         </div>
@@ -302,6 +305,7 @@
 </div>
 
 <script>
+    
     function showInp(){
         getSelectValue = document.getElementById("tipo").value;
         if(getSelectValue=="Estudiante"){
@@ -371,25 +375,25 @@
             e.preventDefault()
 
             if(document.getElementById('tipo').value == 'Estudiante')
-            formulario.setAttribute('action', '{{ url('/registerest') }}')
+            formulario.setAttribute('action', '{{ url('editest', $user->id)}}')
 
             if(document.getElementById('tipo').value == 'Personal')
-            formulario.setAttribute('action', '{{ url('/registerper ')}}')
+            formulario.setAttribute('action', '{{ url('editper', $user->id)}}')
 
             if(document.getElementById('tipo').value == 'Visitante')
-            formulario.setAttribute('action', '{{ url('/registervis ')}}')
+            formulario.setAttribute('action', '{{ url('editvis', $user->id)}}')
 
             if(document.getElementById('tipo').value == 'Servicios')
-            formulario.setAttribute('action', '{{ url('/registerser ')}}')
+            formulario.setAttribute('action', '{{ url('editser', $user->id)}}')
 
             if(document.getElementById('tipo').value == 'Proveedor')
-            formulario.setAttribute('action', '{{ url('/registerpro ')}}')
+            formulario.setAttribute('action', '{{ url('editpro', $user->id)}}')
 
             if(document.getElementById('tipo').value == 'Administrador')
-            formulario.setAttribute('action', '{{ url('/registeradm ')}}')
+            formulario.setAttribute('action', '{{ url('editadm', $user->id)}}')
 
             if(document.getElementById('tipo').value == 'Otro')
-            formulario.setAttribute('action', '{{ url('/registerotro ')}}')
+            formulario.setAttribute('action', '{{ url('editotro', $user->id)}}')
 
             document.getElementById('formulario').submit()
         });
@@ -398,7 +402,3 @@
 </body>
 @endsection
 </html>
-
-
-
-
